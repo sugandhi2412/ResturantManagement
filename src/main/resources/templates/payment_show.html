@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Edit Payment Details </title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-edit">
+		<div class="row">
+			<h2>
+				Edit Payment Details
+			</h2>
+			<form th:action="@{/order/payment/update}" th:object="${payment}">
+				<table class="tbl-form">
+					<tr>
+						<td>Total Amount</td>
+						<td><input readonly type="text" class="form-control" name="totalAmount" th:value="${obj.amount}" /></td>
+					</tr>
+					<tr>
+						<td>Tips Amount</td>
+						<td><input type="text" class="form-control" name="tipsAmount"   /></td>
+					</tr>
+					<tr>
+						<td>Payment Mode</td>
+						<td><input type="text" class="form-control" name="paymentMode"   /></td>
+					</tr>
+				
+				</table>
+
+				<input type="hidden" name="orderId" th:value="${obj.orderId}" />
+				<button type="submit" class="btn btn-success btn-submit">Update</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

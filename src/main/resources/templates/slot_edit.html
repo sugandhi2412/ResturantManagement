@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Edit Room Details </title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-edit">
+		<div class="row">
+			<h2>
+				Edit Room Details
+			</h2>
+			<form th:action="@{/room/update}" th:object="${room}">
+				<table class="tbl-form">
+					<tr>
+						<td>Room No</td>
+						<td><input readonly type="text" class="form-control" name="roomNo" th:value="${obj.roomNo}" /></td>
+					</tr>
+					<tr>
+						<td>Room Type</td>
+						<td><input type="text" class="form-control" name="type" th:value="${obj.type}"  /></td>
+					</tr>
+					<tr>
+						<td>Capacity</td>
+						<td><input type="text" class="form-control" name="capacity" th:value="${obj.capacity}"  /></td>
+					</tr>
+					<tr>
+						<td>Price</td>
+						<td><input type="text" class="form-control" name="price" th:value="${obj.price}"  /></td>
+					</tr>
+				
+				</table>
+
+				<input type="hidden" name="id" th:value="${obj.id}" />
+				<input type="hidden" name="status" th:value="${obj.status}" />
+				<button type="submit" class="btn btn-success btn-submit">Update</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default">
+
+<head>
+<title>Slot List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>Slot Details</h2>
+			<form th:action="@{/slot/save}" th:object="${slot}">
+				<table width="500px" style="margin: auto">
+					<tr>
+						<td>Slot Time</td>
+						<td><input type="time" class="form-control" name="slotTime" />
+						</td>
+						<td>
+							<button type="submit" class="btn btn-success btn-submit">Add</button>
+						</td>
+					</tr>
+				</table>
+
+
+
+			</form>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>Slot Time</th>
+							<th>Delte</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td th:text="${data.slotTime}"></td>
+							<td><a th:href="@{'/slot/delete/' + ${data.id}}"
+								class="btn btn-warning btn-submit">Delete</a></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

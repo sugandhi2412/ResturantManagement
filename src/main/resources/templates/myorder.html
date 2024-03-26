@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default_cust">
+
+<head>
+	<title>Order List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Order Details 
+				
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>View Order</th>
+							<th>Order Date</th>
+							<th>Quantity</th>
+							<th>Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td><a th:href="@{'/order/placed/' + ${data.id}}">
+							<span class="glyphicon glyphicon-folder-open"></span> 
+							&nbsp; 
+							View Order
+							</a></td>
+							<td th:text="${data.orderedDate}"></td>
+							<td th:text="${data.orderItems.size()}+' Items'"></td>
+							<td th:text="${data.amount}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

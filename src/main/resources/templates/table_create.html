@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Add Table</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-create">
+		<div class="row">
+			<h2>
+				Add New Table
+				
+			</h2>
+			<form th:action="@{/table/save}" th:object="${table}" method="post" >
+
+				<table class="tbl-form">
+
+					<tr>
+						<td>Table No</td>
+						<td><input type="text" class="form-control" name="tableNo" /></td>
+					</tr>
+					<tr>
+						<td>Capacity</td>
+						<td><input type="text" class="form-control" name="capacity" /></td>
+					</tr>
+				</table>
+				
+				<button type="submit" class="btn btn-success btn-submit">Save</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

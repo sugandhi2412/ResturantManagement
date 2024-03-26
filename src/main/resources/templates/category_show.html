@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Show Category</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-view">
+		<div class="row">
+
+			<h2>
+				Category Details
+			</h2>
+
+			<table class="tbl-show table" style="width:600px">
+				<tr>
+					<td>Id</td>
+					<td th:text="${obj.catId}"></td>
+				</tr>
+				<tr>
+					<td>Category</td>
+					<td th:text="${obj.name}"></td>
+				</tr>
+				<tr>
+					<td>Remarks</td>
+					<td th:text="${obj.remarks}"></td>
+				</tr>
+			</table>
+
+			<form action="/category/delete">
+				<input type="hidden" name="id" th:value="${obj.id}" />
+				<h2><input type="submit" class="btn btn-danger btn-submit" value="Delete"
+						onclick="return confirm('Are you sure?');" />
+					<a th:href="@{'/category/edit/' + ${obj.id}}" class="btn btn-warning btn-submit">Edit</a>
+				</h2>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

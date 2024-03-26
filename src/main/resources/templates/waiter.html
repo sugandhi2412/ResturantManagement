@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Employee List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Waiters List 
+				<a href="/waiter/create" class="btn btn-warning"><span class="glyphicon glyphicon-plus-sign"></span>
+					Add New</a>
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Phone</th>
+							<th>Email Id</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td><a th:text="${data.employeeId}" th:href="@{'/waiter/show/' + ${data.id}}"></a></td>
+							<td th:text="${data.employeeName}"></td>
+							<td th:text="${data.phone}"></td>
+							<td th:text="${data.emailId}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

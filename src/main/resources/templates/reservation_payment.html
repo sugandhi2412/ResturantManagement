@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Reservation </title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-edit">
+		<div class="row">
+			<h2>
+				Booking Confirmation
+			</h2>
+			<form th:action="@{/reservation/checkin/update}" th:object="${reservationamount}">
+				<table class="tbl-form">
+					<tr>
+						<td>Customer ID</td>
+						<td><input readonly type="text" class="form-control" name="customerId"
+								th:value="${obj.customerId}" /></td>
+					</tr>
+					<tr>
+						<td>Check In</td>
+						<td><input readonly type="text" class="form-control" name="checkInDate"
+								th:value="${obj.checkInDate}" /></td>
+					</tr>
+					<tr>
+						<td>Check Out</td>
+						<td><input readonly type="text" class="form-control" name="checkOutDate"
+								th:value="${obj.checkOutDate}" /></td>
+					</tr>
+					<tr>
+						<td>Occupants</td>
+						<td><input readonly type="text" class="form-control" name="numberOfOccupants"
+								th:value="${obj.numberOfOccupants}" /></td>
+					</tr>
+					<tr>
+						<td>Room Type</td>
+						<td><input readonly type="text" class="form-control" name="type" th:value="${obj.type}" /></td>
+					</tr>
+					<tr>
+						<td>Room Number</td>
+						<td><input type="text" class="form-control" name="roomNo" th:value="${obj.roomNo}" /></td>
+					</tr>
+					<tr>
+						<td>Charge Amount</td>
+						<td><input readonly type="text" class="form-control" name="chargeAmount"
+								th:value="${obj.chargeAmount}" /></td>
+					</tr>
+					<tr>
+						<td>Due Amount</td>
+						<td><input type="text" class="form-control" name="dueAmount" th:value="${obj.dueAmount}" /></td>
+					</tr>
+					<tr>
+						<td>Paid Amount</td>
+						<td><input type="text" class="form-control" name="amountPaid" th:value="${obj.amountPaid}" />
+						</td>
+					</tr>
+					<tr>
+						<td>Payment Type</td>
+						<td><input type="text" class="form-control" name="paymentType" th:value="${obj.paymentType}" />
+						</td>
+					</tr>
+				</table>
+				<input type="hidden" name="id" th:value="${obj.id}" />
+				<button type="submit" class="btn btn-success btn-submit">Book</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

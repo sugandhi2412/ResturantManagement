@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Create Menu</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-create">
+		<div class="row">
+			<h2>
+				Add New
+				<a href="/menu/list" class="btn btn-warning"><span class="glyphicon glyphicon-list"></span>
+					View Menus</a>
+			</h2>
+			<form th:action="@{/menu/save}" th:object="${menu}" method="post" enctype="multipart/form-data">
+
+				<table class="tbl-form">
+					<tr>
+						<td>Photo</td>
+						<td><input type="file" name="image" accept="image/png, image/jpeg" /></td>
+					</tr>
+					<tr>
+						<td>Category</td>
+						<td>
+							<select  class="form-control" name="catId" >
+								<option th:each="data : ${categories}"  th:value="${data.catId}" th:text="${data.name}">
+								</option>
+							</select>
+
+						</td>
+					</tr>
+					<tr>
+						<td>Menu</td>
+						<td><input type="text" class="form-control" name="name" /></td>
+					</tr>
+					
+					<tr>
+						<td>Price</td>
+						<td><input type="text" class="form-control" name="price" /></td>
+					</tr>
+
+					<tr>
+						<td>Recipe</td>
+						<td><textarea class="form-control" name="recipe" cols="60" rows="3"></textarea></td>
+					</tr>
+
+
+				</table>
+				
+				<button type="submit" class="btn btn-success btn-submit">Save</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

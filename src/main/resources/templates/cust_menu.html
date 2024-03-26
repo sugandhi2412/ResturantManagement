@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default_cust">
+
+<head>
+<title>Menu List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+
+		<div class="container-xxl py-5">
+			<div class="container">
+				<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+					<h5
+						class="section-title ff-secondary text-center text-primary fw-normal">Food
+						Menu</h5>
+					<h1 class="mb-5">Menu Items</h1>
+				</div>
+				<div class="tab-class text-center wow fadeInUp"
+					data-wow-delay="0.1s">
+
+					<div class="tab-content">
+						<div id="tab-1" class="tab-pane fade show p-0 active">
+							<div class="row g-4">
+								<div class="col-lg-6" th:each="data : ${datalist}">
+									<div class="d-flex align-items-center">
+										<img class="flex-shrink-0 img-fluid rounded"
+											th:src="@{'/uploads/' + ${data.imgUrl}}" alt=""
+											style="width: 80px; height: 60px">
+										<div class="w-100 d-flex flex-column text-start ps-4">
+											<h5 class="d-flex justify-content-between border-bottom pb-2">
+												<span th:text="${data.name}"></span> <span
+													class="text-primary" th:text="${data.price}"></span>
+											</h5>
+											<small class="fst-italic" th:text="${data.recipe}"></small>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Add Employee</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-create">
+		<div class="row">
+			<h2>
+				Add New Waiter
+				
+			</h2>
+
+			<form th:action="@{/waiter/save}" th:object="${employee}">
+				<table class="tbl-form">
+					<tr>
+						<td>Name</td>
+						<td><input type="text" class="form-control" name="employeeName" /></td>
+					</tr>
+					<tr>
+						<td>Address</td>
+						<td><textarea class="form-control" name="address" cols="60" rows="3"></textarea></td>
+					</tr>
+					<tr>
+						<td>Phone</td>
+						<td><input type="text" class="form-control" name="phone" /></td>
+					</tr>
+					<tr>
+						<td>Email Id</td>
+						<td><input type="text" class="form-control" name="emailId" /></td>
+					</tr>
+					<tr>
+						<td>Gender</td>
+						<td>
+							<input type="radio" class="form-check-input" name="gender" value="Male"/> Male
+							<input type="radio" class="form-check-input" name="gender" value="Female"/> Female
+						</td>
+					</tr>
+					<tr>
+						<td>Salary</td>
+						<td><input type="text" class="form-control" name="salary" /></td>
+					</tr>
+					
+					<tr>
+						<td>Password</td>
+						<td><input type="password" class="form-control" name="password" /></td>
+					</tr>
+				</table>
+				<button type="submit" class="btn btn-success btn-submit">Save</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Edit Employee Details </title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-edit">
+		<div class="row">
+			<h2>
+				Edit Waiter Details
+				
+			</h2>
+			<form th:action="@{/waiter/update}" th:object="${waiter}">
+				<table class="tbl-form">
+					<tr>
+						<td>Employee ID</td>
+						<td><input readonly type="text" class="form-control" name="employeeId" th:value="${obj.employeeId}" /></td>
+					</tr>
+					<tr>
+						<td>Name</td>
+						<td><input type="text" class="form-control" name="employeeName" th:value="${obj.employeeName}" /></td>
+					</tr>
+					<tr>
+						<td>Address</td>
+						<td><textarea class="form-control" name="address" cols="60" rows="3"
+								th:text="${obj.address}"></textarea></td>
+					</tr>
+					<tr>
+						<td>Phone</td>
+						<td><input type="text" class="form-control" name="phone" th:value="${obj.phone}" /></td>
+					</tr>
+					<tr>
+						<td>Email Id</td>
+						<td><input type="text" class="form-control" name="emailId" th:value="${obj.emailId}" /></td>
+					</tr>
+					<tr>
+						<td>Gender</td>
+						<td>
+							<input type="radio" class="form-check-input" name="gender" value="Male" th:checked="${obj.gender=='Male'}"/> Male
+							<input type="radio" class="form-check-input" name="gender" value="Female" th:checked="${obj.gender=='Female'}"/> Female
+						</td>
+					</tr>
+					<tr>
+						<td>Salary</td>
+						<td><input type="text" class="form-control" name="salary" th:value="${obj.salary}"/></td>
+					</tr>				
+					<tr>
+						<td>Password</td>
+						<td><input type="password" class="form-control" name="password"  th:value="${obj.password}"/></td>
+					</tr>
+				</table>
+				<input type="hidden" name="id" th:value="${obj.id}" />
+				<button type="submit" class="btn btn-success btn-submit">Update</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

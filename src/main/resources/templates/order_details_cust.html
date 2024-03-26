@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default_cust">
+<head>
+<title>Order Details</title>
+</head>
+<body>
+	<div layout:fragment="content" class="row page-view">
+		<div class="row">
+			<h2>Order Placed</h2>
+
+			<table class="tbl-show table table-success ">
+				<tr>
+					<td>Order ID</td>
+					<td th:text="${obj.orderId}"></td>
+				</tr>
+				<tr>
+					<td>Order Time</td>
+					<td th:text="${obj.orderedDate}"></td>
+				</tr>
+				<tr>
+					<td>Order Type</td>
+					<td th:text="${obj.orderType}"></td>
+				</tr>
+				<tr>
+					<td>Delivery Status</td>
+					<td th:text="${obj.deliveryStatus}"></td>
+				</tr>
+				<tr>
+					<td colspan=2>
+						<table style="width: 95%; text-align: center"
+							class="table-bordered">
+							<tr>
+								<th class="center">Item Name</th>
+								<th class="center">Quantity</th>
+								<th class="center">Price</th>
+							</tr>
+							<tr th:each="item : ${obj.orderItems}">
+								<td th:text="${item.name}"></td>
+								<td th:text="${item.qty}"></td>
+								<td th:text="${item.price}"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td>Amount</td>
+					<td th:text="${obj.amount}"></td>
+				</tr>
+
+			</table>
+
+
+		</div>
+	</div>
+</body>
+</html>

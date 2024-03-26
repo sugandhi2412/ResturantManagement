@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default">
+<head>
+<title>Order Details</title>
+</head>
+<body>
+	<div layout:fragment="content" class="page-view">
+		<div class="row">
+			<h2>Order Details : <span th:text="${obj.orderId}"></span></h2>
+			<b th:text="'Ordered Time : '+${obj.orderedDate}"></b>
+			<b th:text="'Waiter id : '+${obj.staffId}"></b>
+				<table class="tbl-show table table-success ">
+					<tr>
+						<td colspan=2>
+							<table style="width: 95%; text-align: center"
+								class="table-bordered">
+								<tr>
+									<th class="center">Order Item</th>
+									<th class="center">Quantity</th>
+									<th class="center">Price</th>
+								</tr>
+								<tr th:each="item : ${obj.orderItems}">
+									<td th:text="${item.name}"></td>
+									<td th:text="${item.qty}"></td>
+									<td th:text="${item.price}"></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					
+				</table>
+
+			<h2>Amount : <span th:text="${obj.amount}"></span></h2>
+				<div   th:if="${session.name != 'Admin' && pmt != null}" >
+					<h2>Tips Amount : <span th:text="${pmt.tipsAmount}"></span></h2>
+					<h2>Payment Mode : <span th:text="${pmt.paymentMode}"></span></h2>
+		
+				</div>			
+							
+		<a style="width:300px; margin:auto" th:href="'/order/payment/'+${obj.orderId}"  th:if="${session.name != 'Admin' && pmt==null}"  class="btn btn-success btn-submit">Payment</a>
+			
+		</div>
+	</div>
+</body>
+</html>

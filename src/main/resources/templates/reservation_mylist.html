@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default_cust">
+
+<head>
+	<title>Reservation List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Reservation List 
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+							<tr>
+							<th>ReservationId</th>
+							<th>CustomerId</th>
+							<th>BookingDate</th>
+							<th>Table No</th>
+							<th>SlotTime</th>
+							<th>Status</th>
+							<th>Cancel</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td th:text="${data.reservationId}"></td>
+							<td th:text="${data.customerId}"></td>
+							<td th:text="${data.bdate}"></td>
+							<td th:text="${data.tableNo}"></td>
+							<td th:text="${data.slotTime}"></td>
+							<td th:text="${data.status}"></td>
+							<td th:if="${data.status == 'Booked'}"><a  th:text="cancel" th:href="@{'/reservation/delete/' + ${data.id}}" class="btn"></a></td >
+							<td th:if="${data.status == 'Cancelled'}" th:text="${'Cancelled'}"></td >
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

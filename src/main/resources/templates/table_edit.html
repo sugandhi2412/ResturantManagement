@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Edit Table Details </title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-edit">
+		<div class="row">
+			<h2>
+				Edit Table Details
+			</h2>
+			<form th:action="@{/table/update}" th:object="${table}">
+				<table class="tbl-form">
+					<tr>
+						<td>Table No</td>
+						<td><input readonly type="text" class="form-control" name="tableNo" th:value="${obj.tableNo}" /></td>
+					</tr>
+					<tr>
+						<td>Capacity</td>
+						<td><input type="text" class="form-control" name="capacity" th:value="${obj.capacity}"  /></td>
+					</tr>
+				
+				</table>
+
+				<input type="hidden" name="id" th:value="${obj.id}" />
+				<button type="submit" class="btn btn-success btn-submit">Update</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

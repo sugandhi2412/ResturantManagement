@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Employee List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Reservation List
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>Order</th>
+							<th>CustomerId</th>
+							<th>BookingDate</th>
+							<th>Table No</th>
+							<th>SlotTime</th>
+							<th>status</th>
+							<th>cancel</th >
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td><a th:href="@{'/order/create/reserv/' + ${data.reservationId}+'/'+${data.customerId}}"><span class="glyphicon glyphicon-folder-open"></span> Order</a></td>
+							<td th:text="${data.customerId}"></td>
+							<td th:text="${data.bdate}"></td>
+							<td th:text="${data.tableNo}"></td>
+							<td th:text="${data.slotTime}"></td>
+							<td th:text="${data.status}"></td>
+							<td th:if="${data.status == 'Booked'}"><a  th:text="cancel" th:href="@{'/reservation/delete/' + ${data.id}}" class="btn"></a></td >
+							<td th:if="${data.status == 'Paid'}" th:text="paid"></td >
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

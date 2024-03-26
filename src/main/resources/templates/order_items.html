@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default_cust">
+
+<head>
+<title>Menu List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<section id="cart_items">
+				<div class="container">
+					<div class="">
+						<table class="table table-condensed">
+							<thead>
+								<tr class="cart_menu">
+									<td class="description">Item</td>
+									<td class="price">Price</td>
+									<td class="quantity">Quantity</td>
+									<td class="total">Total</td>
+									<td></td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="data : ${datalist}" >
+
+									<td class="cart_description">
+										<p th:text="${data.name}"></p>
+									</td>
+									<td class="cart_price">
+										<p th:text="'$ '+${data.price}"></p>
+									</td>
+									<td class="cart_quantity" >
+										<div class="cart_quantity_button">
+											<a>
+											<form style="display: inline;" th:action="@{/order/add}" th:object="${orderItem}" >
+												<input type="hidden" name="menuId" th:value="${data.menuId}" />
+												<input type="hidden" name="price" th:value="${data.price}" />
+												<input type="hidden" name="name" th:value="${data.name}" />
+												<input type="hidden" name="imgUrl" th:value="${data.imgUrl}" />
+												<input type="submit" style="border:0px !important" class="cart_quantity_up" value="+" >
+											</form>
+											</a> 
+
+											<input type="text" size="2" readonly
+												style="text-align: center; border:0px !important" class="cart_quantity_input"
+												th:if="${#session.getAttribute(data.menuId) != null}"
+												th:value="${#session.getAttribute(data.menuId).toString()}" />
+											<input type="text" size="2" readonly
+												style="text-align: center; border:0px !important" class="cart_quantity_input"
+												th:if="${#session.getAttribute(data.menuId) == null}"
+												th:value="0" />
+
+											<a>
+											<form style="display: inline;" th:action="@{/order/remove}"
+												th:object="${orderItem}">
+												<input type="hidden" name="menuId" th:value="${data.menuId}" />
+												<input type="hidden" name="price" th:value="${data.price}" />
+												<input type="hidden" name="name" th:value="${data.name}" />
+												<input type="hidden" name="imgUrl" th:value="${data.imgUrl}" />
+												<button type="submit" style="border:0px !important" class="cart_quantity_down" >-</button>
+											</form>
+											</a>													
+										</div>
+									</td>
+									<td class="cart_total">
+ 										<p class="cart_total_price" th:text="'$ '+ ${data.price} * ${(#session.getAttribute(data.menuId)==null)?0:#session.getAttribute(data.menuId)}"></p>
+									</td>
+									
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</section>
+			<!--/#cart_items-->
+
+
+			<div class="table-responsive">
+				<form th:action="@{/order/save}">
+
+					<button type="submit" class="btn btn-warning">Order Food</button>
+				</form>
+			</div>
+			<br><br>
+		</div>
+	</div>
+</body>
+
+</html>

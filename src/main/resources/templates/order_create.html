@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Create order</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-create">
+		<div class="row">
+			<h2>
+				Add New
+				<a href="/order/list" class="btn btn-warning"><span class="glyphicon glyphicon-list"></span>
+					View Orders</a>
+			</h2>
+			<form th:action="@{/order/init}" th:object="${order}" method="post" >
+
+				<table class="tbl-form">
+					<tr>
+						<td>Table No</td>
+						<td>
+							<select  class="form-control" name="tableNo" >
+								<option th:each="data : ${tables}"  th:value="${data.tableNo}" th:text="${data.tableNo}">
+								</option>
+							</select>
+
+						</td>
+					</tr>
+					<tr>
+						<td>Slot</td>
+						<td>
+							<select  class="form-control" name="slotTime" >
+								<option th:each="data : ${slots}"  th:value="${data.slotTime}" th:text="${data.slotTime}">
+								</option>
+							</select>
+
+						</td>
+					</tr>
+					<tr>
+						<td>Customer Id</td>
+						<td th:if="${cid == null}"><input type="text" class="form-control" name="custId" /></td>
+						<td th:if="${cid != null}"><input type="text" class="form-control" name="custId" th:value="${cid}"/></td>
+					</tr>
+					
+					<tr>
+						<td>ReservationId</td>
+						<td th:if="${rid == null}"><input type="text" class="form-control" name="reservationId" /></td>
+						<td th:if="${rid != null}"><input type="text" class="form-control" name="reservationId"  th:value="${rid}" /></td>
+					</tr>
+
+				</table>
+				
+				<button type="submit" class="btn btn-success btn-submit">Save</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

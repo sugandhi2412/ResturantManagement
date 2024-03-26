@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Table List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Table Details
+				<a href="/table/create" class="btn btn-warning"><span class="glyphicon glyphicon-plus-sign"></span>
+					Add New </a>
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>Table No</th>
+							<th>Capacity</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td th:text="${data.tableNo}"></td>
+							<td th:text="${data.capacity}"></td>
+							<td>
+							<a th:href="@{'/table/edit/' + ${data.id}}" class="btn btn-warning btn-submit">Edit</a>
+							</td>
+							<td>
+							<a th:href="@{'/table/delete/' + ${data.id}}" class="btn btn-warning btn-submit">Delete</a>
+							</td>
+													
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

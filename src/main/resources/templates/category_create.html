@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Create Category</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-create">
+		<div class="row">
+			<h2>
+				Add New
+				
+			</h2>
+
+			<form th:action="@{/category/save}" th:object="${category}">
+				<table class="tbl-form">
+					<tr>
+						<td>Name</td>
+						<td><input type="text" class="form-control" name="name" /></td>
+					</tr>
+					<tr>
+						<td>Remarks</td>
+						<td><textarea class="form-control" name="remarks" cols="60" rows="5"></textarea></td>
+					</tr>
+
+				</table>
+				<button type="submit" class="btn btn-success btn-submit">Save</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

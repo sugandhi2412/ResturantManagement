@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Edit Category </title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-edit">
+		<div class="row">
+			<h2>
+				Edit Category
+				<a href="/category/list" class="btn btn-warning"><span class="glyphicon glyphicon-list"></span>
+					View Categories</a>
+			</h2>
+			<form th:action="@{/category/update}" th:object="${category}">
+				<table class="tbl-form">
+					<tr>
+						<td> Category ID</td>
+						<td><input readonly type="text" class="form-control" name="catId" th:value="${obj.catId}" /></td>
+					</tr>
+					<tr>
+						<td> Name</td>
+						<td><input type="text" class="form-control" name="name" th:value="${obj.name}" /></td>
+					</tr>
+					<tr>
+						<td>Remarks</td>
+						<td><textarea class="form-control" name="remarks" cols="60" rows="5"
+								th:text="${obj.remarks}"></textarea></td>
+					</tr>
+					
+				</table>
+
+				<input type="hidden" name="id" th:value="${obj.id}" />
+				<button type="submit" class="btn btn-success btn-submit">Update</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

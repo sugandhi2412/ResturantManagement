@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Edit Menu Details </title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-edit">
+		<div class="row">
+			<h2>
+				Edit Menu
+
+			</h2>
+			<form th:action="@{/menu/update}" th:object="${menu}">
+				<table class="tbl-form">
+					<tr>
+						<td>Menu ID</td>
+						<td><input readonly type="text" class="form-control" name="menuId" th:value="${obj.menuId}" /></td>
+					</tr>
+					<tr>
+						<td>Category</td>
+						<td>
+							<select  class="form-control" name="catId" th:value="${obj.catId}">
+								<option th:each="data : ${categories}" 
+								 th:value="${data.catId}"
+								 th:selected=${data.catId==obj.catId}
+								  th:text="${data.name}">
+								</option>
+							</select>
+
+						</td>
+					</tr>
+					<tr>
+						<td>Menu</td>
+						<td><input type="text" class="form-control" name="name" th:value="${obj.name}" /></td>
+					</tr>
+					
+					<tr>
+						<td>Price</td>
+						<td><input type="text" class="form-control" name="price" th:value="${obj.price}" /></td>
+					</tr>
+
+					<tr>
+						<td>Recipe</td>
+						<td><textarea class="form-control" name="recipe" cols="60" rows="3" th:text="${obj.recipe}"></textarea></td>
+					</tr>
+				</table>
+
+				<input type="hidden" name="id" th:value="${obj.id}" />
+				<input type="hidden" name="imgUrl" th:value="${obj.imgUrl}" />
+				<button type="submit" class="btn btn-success btn-submit">Update</button>
+								<a href="/menu/list" class="btn btn-warning"><span class="glyphicon glyphicon-list"></span>
+					View Menu</a>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

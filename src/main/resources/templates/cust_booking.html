@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default_cust">
+
+<head>
+<title>Customer</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="px-0 wow fadeInUp" data-wow-delay="0.1s">
+
+		<!-- Reservation Start -->
+			<div class="row g-0">
+				<div class="col-md-6">
+					<div class="video">
+						<button type="button" class="btn-play" data-bs-toggle="modal"
+							data-src="https://www.youtube.com/embed/DWRcNpR6Kdc"
+							data-bs-target="#videoModal">
+							<span></span>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-6 bg-dark d-flex align-items-center">
+					<div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+						<h5
+							class="section-title ff-secondary text-start text-primary fw-normal">Reservation</h5>
+						<h1 class="text-white mb-4">Book A Table Online</h1>
+						<form th:action="@{/reservation/save}" th:object="${booking}">
+							<div class="row g-3">
+								<div class="col-md-6">
+									<div class="form-floating">
+										<input type="date" class="form-control" name="bdate" id="bdate"
+											placeholder="Booking Date" />
+											 <label for="bdate">Booking
+											Date</label>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-floating">
+										<select class="form-control" name="capacity" id="capacity">
+											<option th:each="data : ${tablelist}" th:value="${data}"
+												th:text="${data}"></option>
+										</select> <label for="capacity">Table Capacity</label>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-floating date" id="date3"
+										data-target-input="nearest">
+										<select class="form-control" name="slotTime" id="slot">
+											<option th:each="data : ${slotlist}"
+												th:value="${data.slotTime}" th:text="${data.slotTime}"></option>
+										</select>
+										<label for="slot">Time Slot</label>
+									</div>
+								</div>
+								<div class="col-md-6">
+									
+								</div>
+								
+								<div class="col-12">
+									<button class="btn btn-primary w-100 py-3" type="submit">Book
+										Now</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+		</div>
+
+		<div class="modal fade" id="videoModal" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content rounded-0">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<!-- 16:9 aspect ratio -->
+						<div class="ratio ratio-16x9">
+							<iframe class="embed-responsive-item" src="" id="video"
+								allowfullscreen allowscriptaccess="always" allow="autoplay"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Reservation Start -->
+
+	</div>
+</body>
+
+</html>

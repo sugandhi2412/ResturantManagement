@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Categories List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+<!--	
+	<img th:src="@{/menu/cricket.jpeg}" alt="">
+	-->
+		<div class="row page-list">
+
+			<h2>
+				Food Categories 
+				<a href="/category/create" class="btn btn-warning"><span class="glyphicon glyphicon-plus-sign"></span>
+					Add New </a>
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>Name</th>
+							<th>Remarks</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td><a th:text="${data.name}" th:href="@{'/category/show/' + ${data.id}}"></a></td>
+							<td th:text="${data.remarks}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

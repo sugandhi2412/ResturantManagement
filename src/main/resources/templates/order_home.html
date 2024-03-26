@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default">
+<head>
+<title>Order</title>
+</head>
+<body>
+	<div layout:fragment="content" class="row page-view">
+			Hello
+			<div >
+				<div class="" >
+				
+					<div  th:each="data : ${datalist}" >
+						<div class="product-image-wrapper"  style="background:white; box-shadow:0px 0px 10px black">
+							<div class="row">
+								<div class="col-md-">
+									<h4 th:text="${data.name}"></h4>
+								</div>
+																	
+										<form style="display: inline;" th:action="@{/order/add/home}" th:object="${orderItem}">
+											<input type="hidden" class="form-control" name="menuId" th:value="${data.menuId}" > 
+											<input type="hidden" class="form-control" name="price" th:value="${data.price}" />
+											<input type="hidden" class="form-control" name="name" th:value="${data.name}" /> 
+											<input type="hidden" class="form-control" name="imgUrl" th:value="${data.imgUrl}" />
+											<button type="submit" class="btn btn-default add-to-cart">
+												<i class="fa fa-shopping-cart"></i>
+												Add to cart
+											</button>
+										</form>
+									
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/category-tab-->
+	</div>
+</body>
+</html>

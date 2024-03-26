@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="default">
+    <head>
+        <title>Show Employee</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row page-view">
+            <div class="row">
+                <h2>
+                	Employee Details 
+                </h2>
+                
+                <table class="tbl-show table " style="width:600px">
+                	<tr><td>ID</td><td th:text="${obj.employeeId}"></td ></tr>
+                	<tr><td>Name</td><td th:text="${obj.employeeName}"></td ></tr>
+                	<tr><td>Phone</td><td th:text="${obj.phone}"></td ></tr>
+                	<tr><td>Email</td><td th:text="${obj.emailId}"></td ></tr>
+                	<tr><td>Gender</td><td th:text="${obj.gender}"></td ></tr>
+                	<tr><td>Salary</td><td th:text="${obj.salary}"></td ></tr>
+                	<tr><td>Address</td><td th:text="${obj.address}"></td ></tr>
+                	
+                </table >
+
+                <form action="/waiter/delete">
+                    <input type="hidden" name="id" th:value="${obj.id}" />
+                    <h2><input type="submit" class="btn btn-danger btn-submit" value="Delete" onclick="return confirm('Are you sure?');" />
+                        <a th:href="@{'/waiter/edit/' + ${obj.id}}" class="btn btn-warning btn-submit">Edit</a>
+                        </h2>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
